@@ -1,0 +1,133 @@
+{
+  "taxonomy_version": "1.1",
+  "categories": {
+    "SPEC": "仕様系 — 要求・仕様文書に起因する失敗",
+    "CTX": "コンテキスト系 — エージェントの文脈把握に起因する失敗",
+    "GEN": "生成系 — モデルの出力そのものに起因する失敗",
+    "VERIF": "検証系 — テスト・検証機構に起因する失敗",
+    "TOOL": "ツール/環境系 — ハーネスの道具立てに起因する失敗",
+    "PROC": "プロトコル系 — 7段階プロトコルの運用に起因する失敗",
+    "DATA": "データ系 — 外部データソースに起因する失敗"
+  },
+  "codes": {
+    "SPEC-AMB": {
+      "category": "SPEC",
+      "name": "仕様の曖昧さ",
+      "definition": "SPEC.md の記述が複数解釈可能で、エージェントが誤った解釈を選んだ"
+    },
+    "SPEC-GAP": {
+      "category": "SPEC",
+      "name": "仕様の欠落",
+      "definition": "必要な要求が SPEC.md に書かれておらず、エージェントが自信を持って推測で埋めた(intent debt)"
+    },
+    "SPEC-DRIFT": {
+      "category": "SPEC",
+      "name": "仕様と実装の乖離",
+      "definition": "実装が進む中で SPEC.md が更新されず、文書と実態がずれた"
+    },
+    "CTX-ROT": {
+      "category": "CTX",
+      "name": "コンテキスト劣化",
+      "definition": "長いセッションで初期の制約・決定事項を忘れた(context rot)"
+    },
+    "CTX-MISS": {
+      "category": "CTX",
+      "name": "参照漏れ",
+      "definition": "読むべきファイル・文書を読まずに作業した"
+    },
+    "CTX-STALE": {
+      "category": "CTX",
+      "name": "古い状態の想定",
+      "definition": "ファイルの現在の状態ではなく、過去に見た状態を前提に編集した"
+    },
+    "GEN-HALLUC": {
+      "category": "GEN",
+      "name": "存在しないAPI/機能",
+      "definition": "存在しない関数・ライブラリ・プロパティ・構文を使用した"
+    },
+    "GEN-LOGIC": {
+      "category": "GEN",
+      "name": "生成コードの論理誤り",
+      "definition": "生成したコードのアルゴリズム・エッジケース処理が誤っていた(API は実在し、仕様理解も正しいが、実装ロジックが間違い)"
+    },
+    "GEN-SCOPE": {
+      "category": "GEN",
+      "name": "スコープ逸脱",
+      "definition": "指示範囲外のファイル・機能に手を加えた"
+    },
+    "GEN-REGRESS": {
+      "category": "GEN",
+      "name": "デグレード",
+      "definition": "通っていたテストを新たな変更で壊した"
+    },
+    "VERIF-GAP": {
+      "category": "VERIF",
+      "name": "テストの穴",
+      "definition": "欠陥がテストをすり抜けた(TEST_SPEC のカバレッジ不足)"
+    },
+    "VERIF-FLAKE": {
+      "category": "VERIF",
+      "name": "不安定テスト",
+      "definition": "コードと無関係にテストが確率的に失敗する(flaky)"
+    },
+    "VERIF-FALSE": {
+      "category": "VERIF",
+      "name": "誤検知",
+      "definition": "正しい実装をテスト側の誤りで不合格にした"
+    },
+    "TOOL-ENV": {
+      "category": "TOOL",
+      "name": "環境/依存関係",
+      "definition": "依存パッケージ・実行環境・パスの問題で作業が阻害された"
+    },
+    "TOOL-MISUSE": {
+      "category": "TOOL",
+      "name": "ツール誤用",
+      "definition": "ツール・コマンドを誤った方法で使用した(誤引数、破壊的操作など)"
+    },
+    "TOOL-PERM": {
+      "category": "TOOL",
+      "name": "権限/ガード",
+      "definition": "権限不足、またはガードレールとの衝突で作業が阻害された"
+    },
+    "PROC-SKIP": {
+      "category": "PROC",
+      "name": "工程スキップ",
+      "definition": "7段階プロトコルの段階を飛ばした(テスト前実装など)"
+    },
+    "PROC-BUDGET": {
+      "category": "PROC",
+      "name": "予算超過",
+      "definition": "ターン数・時間・トークン予算を超過してループが打ち切られた"
+    },
+    "PROC-LOOP": {
+      "category": "PROC",
+      "name": "無限ループ/空転",
+      "definition": "同じ失敗の修正を繰り返し、前進しない反復に陥った"
+    },
+    "DATA-SRC": {
+      "category": "DATA",
+      "name": "ソース側の変化",
+      "definition": "外部データソースのスキーマ変更・タイムアウト・仕様変更(Wikidata SPARQL 等)"
+    },
+    "DATA-QUAL": {
+      "category": "DATA",
+      "name": "データ品質",
+      "definition": "想定外の欠損・重複・異常値がパイプラインを壊した"
+    }
+  },
+  "resolutions": [
+    "retry",
+    "rollback",
+    "escalate",
+    "harness_fix",
+    "spec_fix",
+    "test_fix",
+    "accepted"
+  ],
+  "severities": {
+    "S1": "ループ中断級 — ループを完了できない、または成果物を破壊した",
+    "S2": "手戻り級 — 段階の再実行や人間の介入が必要になった",
+    "S3": "軽微 — ループ内で自己修正できた"
+  }
+}

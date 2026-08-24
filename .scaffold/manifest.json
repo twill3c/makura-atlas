@@ -1,0 +1,76 @@
+{
+  "scaffold_version": "1.12.0",
+  "registry_hint": "..\\harness-kit\\scaffold-kit\\registry",
+  "components": [
+    {
+      "type": "block",
+      "id": "agents_core",
+      "target": "AGENTS.md",
+      "source": "blocks/agents_core.md",
+      "installed_version": "1.12.0",
+      "installed_sha256": "50cc0109bd17e26f4264a9d8164974cba2471d808068c81daacd5a68549ddc96"
+    },
+    {
+      "type": "file",
+      "id": "pr_template",
+      "target": ".github/PULL_REQUEST_TEMPLATE.md",
+      "source": "files/.github/PULL_REQUEST_TEMPLATE.md",
+      "installed_version": "1.12.0",
+      "installed_sha256": "a796725e0b3682bc02f12f614eaf88d96b0387a362c2e1b871cd85c5fb8a575d"
+    },
+    {
+      "type": "file",
+      "id": "looplog",
+      "target": "harness/looplog.py",
+      "source": "files/harness/looplog.py",
+      "installed_version": "1.12.0",
+      "installed_sha256": "34ebddc244944a481aeca31bcd9b4fdf7adb4a937b4a43b6ac41aeae21ddea7e"
+    },
+    {
+      "type": "file",
+      "id": "wtctl",
+      "target": "harness/wtctl.py",
+      "source": "files/harness/wtctl.py",
+      "installed_version": "1.12.0",
+      "installed_sha256": "d470f672a8ece2fcc711daada83d6bab304a5578c2679ce47c40ecd79b3c31c2"
+    },
+    {
+      "type": "file",
+      "id": "taxonomy",
+      "target": "schema/taxonomy.json",
+      "source": "files/schema/taxonomy.json",
+      "installed_version": "1.12.0",
+      "installed_sha256": "0573ffd31768fb4cb814a80f1e731647fada8956431e38689aaa3e5085924b3d"
+    },
+    {
+      "type": "file",
+      "id": "license",
+      "target": "LICENSE",
+      "source": "files/LICENSE",
+      "installed_version": "1.12.0",
+      "installed_sha256": "99894d70d7f745bb66c65bb61520c29daf4e33f2649abd7190aee301932c610e"
+    },
+    {
+      "type": "template",
+      "id": "spec_skeleton",
+      "target": "SPEC.md",
+      "source": "templates/SPEC.md.tmpl",
+      "installed_version": "1.12.0"
+    },
+    {
+      "type": "template",
+      "id": "test_spec_skeleton",
+      "target": "TEST_SPEC.md",
+      "source": "templates/TEST_SPEC.md.tmpl",
+      "installed_version": "1.12.0"
+    },
+    {
+      "type": "template",
+      "id": "wt_gate",
+      "target": ".wt/gate.json",
+      "source": "templates/gate.json.tmpl",
+      "installed_version": "1.12.0"
+    }
+  ],
+  "profiles": []
+}

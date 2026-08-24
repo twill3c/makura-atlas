@@ -1,0 +1,11 @@
+{
+  "base_branch": "main",
+  "test_command": "python -m pytest -q --tb=no",
+  "setup_command": null,
+  "gate": {
+    "max_total_lines": 500,
+    "max_files": 30,
+    "exempt": ["logs/loops/*", "out/*", "*.lock", "docs/generated/*"]
+  },
+  "secret_scan": true
+}

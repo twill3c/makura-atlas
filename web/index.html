@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>枕草子アトラス — 情緒の座標・ものづくし解体・沈黙の年表・あけぼの升目</title>
+  <meta name="description" content="『枕草子』44章段を快‐不快×心の動きの二軸に置く散布図に、類聚章段の項目解体・日記章段と史実の年表・季節×時刻の升目を重ねた統合アトラス。座標は編者の解釈で、データを書き換えれば図全体が追随する。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <h1>枕草子アトラス</h1>
+      <p class="subtitle">四十四章段の情緒を、座標・解体・沈黙・升目の四面から眺める</p>
+      <nav class="tabs" role="tablist" aria-label="ビュー切替">
+        <button class="tab is-active" data-view="zahyo" role="tab" aria-selected="true">座標</button>
+        <button class="tab" data-view="kaitai" role="tab" aria-selected="false">解体</button>
+        <button class="tab" data-view="chinmoku" role="tab" aria-selected="false">沈黙</button>
+        <button class="tab" data-view="masume" role="tab" aria-selected="false">升目</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 座標ビュー(F-02/F-03) -->
+      <section id="view-zahyo" class="view is-active">
+        <div class="view-lede">
+          <p>四十四章段を<strong>快‐不快</strong>(横)×<strong>心の動き</strong>(縦)の平面に置く。「にくきもの」と「すさまじきもの」は同じ不快でも上下に大きく離れる。<span class="caveat">座標は編者の解釈値であり、データを書き換えれば図全体が追随する。</span></p>
+        </div>
+        <div class="controls">
+          <div class="control-group" id="type-filter" aria-label="章段の型で絞り込み"></div>
+          <div class="control-group chips" id="tag-filter" aria-label="情緒語で絞り込み"></div>
+        </div>
+        <div class="viz-row">
+          <div class="viz-main"><svg id="scatter" viewBox="0 0 720 600" role="img" aria-label="章段の情緒散布図"></svg></div>
+          <aside class="detail" id="detail-zahyo"><p class="detail-empty">点を選ぶと、章段の原文が縦書きでここに出ます。</p></aside>
+        </div>
+      </section>
+
+      <!-- 解体ビュー(F-04) -->
+      <section id="view-kaitai" class="view">
+        <div class="view-lede">
+          <p>類聚章段(ものづくし)は、座標の上では一点でも、中身は<strong>項目の束</strong>である。章段を選ぶと、袋の中身が同じ平面に散らばる。「にくきもの」の中でも、蚊の羽音と忍び声を暴く犬は覚醒度がまるで違う。</p>
+        </div>
+        <div class="controls"><div class="control-group chips" id="kaitai-chips" aria-label="解体する章段"></div></div>
+        <div class="viz-row">
+          <div class="viz-main"><svg id="kaitai-scatter" viewBox="0 0 720 600" role="img" aria-label="項目の情緒散布図"></svg></div>
+          <aside class="detail" id="detail-kaitai"><p class="detail-empty">項目の点を選ぶと、原文と現代語訳がここに出ます。</p></aside>
+        </div>
+      </section>
+
+      <!-- 沈黙ビュー(F-05) -->
+      <section id="view-chinmoku" class="view">
+        <div class="view-lede">
+          <p>横軸を<strong>史実の時間</strong>に替え、日記章段を推定年に置く。長徳元(995)年を境に史実は暗転するが、章段の座標は<strong>快側に張り付いたまま動かない</strong>。枕草子は定子の没落を書かない——書かれなかったことが、この図の主役である。推定年はいずれも比定であり、確度を点の縁で示す。</p>
+        </div>
+        <div class="viz-row">
+          <div class="viz-main"><svg id="timeline" viewBox="0 0 760 560" role="img" aria-label="日記章段と史実の年表"></svg></div>
+          <aside class="detail" id="detail-chinmoku"><p class="detail-empty">点を選ぶと、章段の原文と年次比定の根拠がここに出ます。帯の上の印は史実です。</p></aside>
+        </div>
+      </section>
+
+      <!-- 升目ビュー(F-06) -->
+      <section id="view-masume" class="view">
+        <div class="view-lede">
+          <p>初段「春はあけぼの」は<strong>季節×時刻</strong>の交点だけで美を言い切った。全章段から季節と時刻の言及(根拠語つき)を拾って升目に敷くと、清少納言の関心の<strong>密集と空白</strong>が見える。埋まらない升目もまた読みどころである。</p>
+        </div>
+        <div class="viz-row">
+          <div class="viz-main"><div id="masume-grid" class="masume-grid" role="grid" aria-label="季節×時刻の升目"></div></div>
+          <aside class="detail" id="detail-masume"><p class="detail-empty">升目を選ぶと、該当章段と根拠語がここに出ます。</p></aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="colophon">
+      <h2>凡例と断り書き</h2>
+      <p>底本間で段の振り方が異なるため(三巻本・能因本・堺本)、本アトラスは<strong>段番号を持たない</strong>。章段は諸本で安定な題で呼ぶ。採録は四十四章段(随想八・類聚二十四・日記十二)。座標(快‐不快・心の動き)、日記章段の推定年、季節×時刻の升目タグは、いずれも編者の解釈・比定であり、根拠をデータのフィールドに明示した。原文は流布本文に拠る抄出で、仮名遣いは歴史的仮名遣いのまま。</p>
+    </footer>
+  </div>
+
+  <div class="app-footer">
+    <a href="https://github.com/twill3c/makura-atlas/blob/master/LICENSE" target="_blank" rel="noreferrer noopener">MIT License</a>
+    © 2026 坂田哲朗 ・
+    <a href="https://github.com/twill3c/makura-atlas" target="_blank" rel="noreferrer noopener">GitHub</a>
+    ・ <a id="link-arukikata" href="#" target="_blank" rel="noreferrer noopener">枕草子アトラスの歩き方</a>
+    ・ <a id="link-sekkeizu" href="#" target="_blank" rel="noreferrer noopener">枕草子アトラス設計図</a>
+    ・ <a href="https://app-menu-amber.vercel.app" target="_blank" rel="noreferrer noopener">App Menu</a>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

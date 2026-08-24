@@ -8,6 +8,10 @@
 - 本プロジェクトの実装は静的サイト(JS)だが、データ層(web/data/*.json)とページ骨格の
   検証は pytest で行う(フリート共通のゲート経路を保つため)
 - フィクスチャ更新は専用コミット(`test: update fixtures`)で行い、理由をループログに記す
+- **SVG ラベルを持つビューを変更したら**、スクリーンショットの目視に加えて
+  `harness/labelcheck.js`(DOM の getBBox 総当たり)で**重なり数 = 0** の数値検査を通すこと(HC-M001。
+  目視は差分に鈍く、修正が効いていないことに気づけない)。実行例:
+  `python -m http.server 8123 --directory web` + `NODE_PATH=../karakuri-hako/node_modules node harness/labelcheck.js`
 
 ## 期待値の出所(HC-016)
 

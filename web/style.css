@@ -1,0 +1,162 @@
+/* 枕草子アトラス — 和紙×墨の基調。UI はゴシック、原文は明朝(F-07) */
+
+:root {
+  --paper: #f7f2e7;
+  --paper-deep: #efe7d5;
+  --ink: #2b2620;
+  --ink-faint: #7a7060;
+  --rule: #d9cfba;
+  --accent: #a4462d; /* 弁柄 */
+  --zuiso: #46777d;  /* 錆浅葱 — 随想 */
+  --ruiju: #b0563a;  /* 弁柄 — 類聚 */
+  --nikki: #6f5b9e;  /* 藤紫 — 日記 */
+  --bright: #e8dfc6;
+  --neutral-band: #ddd3c0;
+  --dark-band: #b9ad9a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  line-height: 1.75;
+}
+
+.page {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.2rem 7.5rem; /* 下端は固定フッタに隠れない余白(F-08) */
+}
+
+/* ---------- 見出し・タブ ---------- */
+.masthead h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  letter-spacing: 0.35em;
+  font-family: "Hiragino Mincho ProN", "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 600;
+}
+.subtitle { margin: 0.2rem 0 1rem; color: var(--ink-faint); font-size: 0.92rem; }
+
+.tabs { display: flex; gap: 0.4rem; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+.tab {
+  appearance: none; border: 1px solid var(--rule); border-bottom: none;
+  background: var(--paper-deep); color: var(--ink-faint);
+  font: inherit; font-size: 0.95rem; letter-spacing: 0.25em;
+  padding: 0.45rem 1.3rem 0.35rem; cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+.tab.is-active { background: var(--paper); color: var(--accent); border-color: var(--accent); font-weight: 700; }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- ビュー共通 ---------- */
+.view { display: none; padding-top: 1rem; }
+.view.is-active { display: block; }
+.view-lede { max-width: 62rem; font-size: 0.95rem; }
+.view-lede .caveat { color: var(--ink-faint); }
+
+.controls { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.6rem 0 0.8rem; }
+.control-group { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+
+.chip {
+  appearance: none; border: 1px solid var(--rule); background: var(--paper);
+  color: var(--ink); font: inherit; font-size: 0.82rem;
+  padding: 0.12rem 0.7rem; border-radius: 999px; cursor: pointer;
+}
+.chip.is-on { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip[data-type="zuiso"].is-on { background: var(--zuiso); border-color: var(--zuiso); }
+.chip[data-type="ruiju"].is-on { background: var(--ruiju); border-color: var(--ruiju); }
+.chip[data-type="nikki"].is-on { background: var(--nikki); border-color: var(--nikki); }
+
+.viz-row { display: flex; gap: 1rem; align-items: stretch; }
+.viz-main { flex: 1 1 62%; min-width: 0; background: #fffdf6; border: 1px solid var(--rule); border-radius: 8px; padding: 0.4rem; }
+.viz-main svg { width: 100%; height: auto; display: block; }
+
+/* ---------- 詳細パネル(縦書き原文 F-07) ---------- */
+.detail {
+  flex: 1 1 38%; min-width: 16rem;
+  background: #fffdf6; border: 1px solid var(--rule); border-radius: 8px;
+  padding: 0.9rem 1rem;
+}
+.detail-empty { color: var(--ink-faint); font-size: 0.88rem; }
+.detail h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.detail .type-badge {
+  display: inline-block; font-size: 0.72rem; letter-spacing: 0.15em;
+  color: var(--paper); border-radius: 3px; padding: 0.05rem 0.5rem; vertical-align: middle;
+}
+.type-badge.zuiso { background: var(--zuiso); }
+.type-badge.ruiju { background: var(--ruiju); }
+.type-badge.nikki { background: var(--nikki); }
+
+.tatext {
+  writing-mode: vertical-rl;
+  font-family: "Hiragino Mincho ProN", "Noto Serif JP", "Yu Mincho", "MS PMincho", serif;
+  font-size: 1.02rem; line-height: 2.1;
+  height: 21rem; max-width: 100%; overflow-x: auto; overflow-y: hidden;
+  margin: 0.6rem 0; padding: 0.6rem 0.4rem;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 4px;
+}
+.modern-text { font-size: 0.88rem; color: var(--ink-faint); }
+.detail .meta { font-size: 0.82rem; color: var(--ink-faint); border-top: 1px dashed var(--rule); padding-top: 0.5rem; margin-top: 0.5rem; }
+.detail .meta dt { font-weight: 700; }
+.detail .meta dd { margin: 0 0 0.35rem; }
+.detail .tagline { font-size: 0.8rem; }
+.detail .tagline span { border: 1px solid var(--rule); border-radius: 999px; padding: 0 0.5rem; margin-right: 0.25rem; }
+
+/* ---------- SVG 記号 ---------- */
+.axis { stroke: var(--rule); stroke-width: 1; }
+.axis-label { fill: var(--ink-faint); font-size: 12px; }
+.quad-label { fill: var(--ink-faint); font-size: 12px; opacity: 0.8; letter-spacing: 0.2em; }
+.dot { cursor: pointer; stroke: #fffdf6; stroke-width: 1.2; }
+.dot:hover { stroke: var(--ink); }
+.dot.is-selected { stroke: var(--ink); stroke-width: 2; }
+.dot.is-dim { opacity: 0.15; pointer-events: none; }
+.dot-label { fill: var(--ink); font-size: 10.5px; pointer-events: none; }
+.parent-dot { fill: none; stroke-width: 2; stroke-dasharray: 4 3; }
+.event-mark { fill: var(--ink-faint); font-size: 10.5px; }
+.event-line { stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 2 3; }
+.conf-low { stroke-dasharray: 2 2; }
+
+/* ---------- 升目 ---------- */
+.masume-grid { display: grid; gap: 4px; padding: 0.4rem; }
+.masume-cell {
+  border: 1px solid var(--rule); border-radius: 5px; min-height: 4.6rem;
+  padding: 0.3rem 0.45rem; font-size: 0.78rem; cursor: pointer; background: var(--paper);
+}
+.masume-cell.is-empty { cursor: default; color: var(--ink-faint); background: transparent; border-style: dashed; }
+.masume-cell.is-selected { outline: 2px solid var(--accent); }
+.masume-cell .count { font-size: 1.15rem; font-weight: 700; color: var(--accent); }
+.masume-head { font-size: 0.8rem; color: var(--ink-faint); display: flex; align-items: center; justify-content: center; letter-spacing: 0.2em; }
+
+/* ---------- 奥付・固定フッタ(F-08: saijiki-lens 準拠) ---------- */
+.colophon { margin-top: 2rem; border-top: 1px solid var(--rule); padding-top: 0.8rem; font-size: 0.85rem; color: var(--ink-faint); }
+.colophon h2 { font-size: 0.95rem; color: var(--ink); }
+
+.app-footer {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 10;
+  text-align: center;
+  padding: 0.55rem 1rem;
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+.app-footer a { color: inherit; text-decoration: underline; text-underline-offset: 0.18em; }
+.app-footer a:hover { color: var(--accent); }
+.app-footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 900px) {
+  .viz-row { flex-direction: column; }
+  .detail { min-width: 0; }
+  .tatext { height: 16rem; }
+}
+@media (max-width: 640px) {
+  .page { padding-bottom: 10rem; } /* 帯が折り返して高くなるぶん空ける */
+}
